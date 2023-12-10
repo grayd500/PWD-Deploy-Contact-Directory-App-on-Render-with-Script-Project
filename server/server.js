@@ -1,4 +1,4 @@
-// server.js:
+// server/server.js:
 const express = require('express');
 
 const app = express();
@@ -6,6 +6,10 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'path/to/your/index.html'));
+});
+
+app.get('/src-sw.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/src-sw.js'));
 });
 
 app.use(express.static('../client/dist'));
