@@ -1,13 +1,20 @@
 {
   "name": "Contact",
   "scripts": {
-    "dev": "",
-    "build": "",
-    "start": ""
+    "dev": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "author": "2U",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7"
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.4",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }

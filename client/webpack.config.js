@@ -1,6 +1,7 @@
 // client/webpack.config.js:
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = () => {
   return {
@@ -16,7 +17,19 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].bundle.js',
     },
-    
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './src/index.html', // Path to your source index.html
+        filename: 'index.html'
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: 'src/manifest.json', to: 'manifest.json' },
+          { from: 'src/icon-192x192.png', to: 'icon-192x192.png' },
+          { from: 'src/icon-512x512.png', to: 'icon-512x512.png' },
+        ],
+      }),
+    ],
 
     // ✅: Add the correct plugins
     module: {
@@ -30,6 +43,6 @@ module.exports = () => {
           type: 'asset/resource',
         },
       ],
-    },    
+    },
   };
 };
