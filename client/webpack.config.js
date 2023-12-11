@@ -25,8 +25,8 @@ module.exports = () => {
       new CopyPlugin({
         patterns: [
           { from: 'src/manifest.json', to: 'manifest.json' },
-          { from: 'src/icon-192x192.png', to: 'icon-192x192.png' },
-          { from: 'src/icon-512x512.png', to: 'icon-512x512.png' },
+          { from: 'src/images/icon-192x192.png', to: 'icon-192x192.png' },
+          { from: 'src/images/icon-512x512.png', to: 'icon-512x512.png' },
         ],
       }),
     ],

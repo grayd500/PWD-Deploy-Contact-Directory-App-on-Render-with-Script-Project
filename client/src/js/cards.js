@@ -36,29 +36,32 @@ form.addEventListener('submit', (event) => {
 });
 
 const fetchCards = async () => {
-// Grab card data from IndexedDB
+  // Grab card data from IndexedDB
   const result = await getDb();
 
-  let card = ` `;
+  // Log the result to see what is being returned
+  console.log('Result from getDb:', result);
 
-  // Loop through the data and create the contact card
-  for (let data of result) {
-    console.log(data);
-    card += `
-    <div class="card card-rounded col-md-3 m-2">
-      <div class="card-header card-rounded">
-        <h1>${data.name}</h1>
-      </div>
-      <div class="card-body">
-        <p>Home Phone: ${data.home_phone}</p>
-        <p>Cell Phone: ${data.cell_phone}</p>
-        <p>Email: ${data.email}</p>
-      </div>
-      <div class="flex-row justify-flex-end p-1">
-        <button class="btn btn-sm btn-danger" id="${data.id}" onclick="deleteCard(this)">Delete</button>
-      </div>
-    </div>
+  let card = '';
+
+  // Check if result is iterable before attempting to loop
+  if (Array.isArray(result)) {
+    for (let data of result) {
+      console.log(data);
+      card += `
+      <div class="card card-rounded col-md-3 m-2">
+        <div class="card-header card-rounded">
+          <h1>${data.name}</h1>
+        </div>
+        <div class="card-body">
+          <p>Home Phone: ${data.home}</p>
+          <p>Cell Phone: ${data.cell}</p>
+          <p>Email: ${data.email}</p>
+        </div>
+        ...
     `;
+    
+    }
   }
 
   // Setting innerHTML as card variable
